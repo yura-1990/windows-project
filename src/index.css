@@ -1,0 +1,90 @@
+body{
+	overflow: hidden;
+	height: 100vh;
+}
+
+body.bg-dark {
+	color: white;
+}
+
+body.bg-dark .border{
+	border-color: white !important;
+}
+
+body .border {
+	border-color: rgba(0, 0, 0, 0.658) !important;
+}
+
+body.bg-dark ::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: #f4f4f452;
+}
+  
+body.bg-dark  ::-webkit-scrollbar-thumb {
+	background-color: #b1b1b1;
+	border-radius: 6px;
+	cursor: grab;
+}
+
+body.bg-dark  ::-webkit-scrollbar-thumb:active{
+	cursor: grabbing;
+}
+
+body .bg-dark ::-webkit-scrollbar-track {
+	background-color: #212529;
+}
+
+body.bg-dark ::-webkit-scrollbar-corner {
+	background-color: #5304b9;
+}
+
+body.bg-dark .btn {
+	color: white;
+}
+
+body.bg-dark .text-theme {
+	color: white; 
+}
+
+/* <<<< >>>> */
+
+body ::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: #f4f4f4;
+}
+  
+body ::-webkit-scrollbar-thumb {
+	background-color: #ffffff;
+	border-radius: 6px;
+	cursor: grab;
+}
+
+body ::-webkit-scrollbar-thumb:active{
+	cursor: grabbing;
+}
+
+body ::-webkit-scrollbar-track {
+	background-color: #858585;
+}
+
+body ::-webkit-scrollbar-corner {
+	background-color: #5304b9;
+}
+
+body.bg-dark .offcanvas {
+	background-color: #343a40;
+	color: white;
+}
+
+.btn {
+	padding: 0px 3px;
+	border-radius: 2px;
+}
+
+.desktop-button{
+	max-width: 50px;
+	height: 50px;
+	cursor: pointer;
+}
