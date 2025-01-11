@@ -5,11 +5,12 @@ import { useEffect } from "react"
 
 function Footer() {
     const getFooterLinks = useFooter(state=>state.getFooterLinks)
+    const showWindow = useFooter(state=>state.showWindow)
     const footerLinks = useFooter(state=>state.state.footerLinks)
 
     useEffect(()=>{
         getFooterLinks()
-    }, [getFooterLinks])
+    }, [])
 
     return (
         <div>
@@ -24,7 +25,9 @@ function Footer() {
                                 <Tooltip id="button-tooltip-2">{ el?.url }</Tooltip>
                             }
                         >
-                            {({ ref, ...triggerHandler }) => ( <p ref={ref} className="btn m-0 border " {...triggerHandler}> {el?.name} </p> )}
+                            {({ ref, ...triggerHandler }) => ( 
+                                <p ref={ref} className={`btn m-0 border ${el.active ? 'bg-success': ''}`} onClick={()=>showWindow(el)} {...triggerHandler}> {el?.name} </p> 
+                            )}
                         </OverlayTrigger>
                     )) }
                 </div> 

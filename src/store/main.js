@@ -3,11 +3,8 @@ import { create } from 'zustand'
 const useMain = create((set) => ({
   state: {
     mainLinks: [
-        {id: 1, name: 'Menu', url: '/menus', icon: '', active: false},
-        {id: 2, name: 'Menu', url: '/menus', icon: '', active: false},
-        {id: 3, name: 'Menu', url: '/menus', icon: '', active: false},
-        {id: 4, name: 'Menu', url: '/menus', icon: '', active: false},
-        {id: 5, name: 'Menu', url: '/menus', icon: '', active: false},
+      {id: 1, name: "Menu", url: "/menus", icon: "", open: false},
+      {id: 2, name: "Menu", url: "/menus", icon: "", open: false},
     ],
   },
 
@@ -15,28 +12,33 @@ const useMain = create((set) => ({
     const footerLinks = localStorage.getItem('footer-links')
 
     if(footerLinks){
-        set({state: {mainLinks: JSON.parse(footerLinks)}})
+      set({state: {mainLinks: JSON.parse(footerLinks)}})
     } else {
-        localStorage.setItem('footer-links', [])
+      localStorage.setItem('footer-links', JSON.stringify([
+        {id: 1, name: "Menu", url: "/menus", icon: "", open: false, active: false}, 
+        {id: 2, name: "Menu", url: "/menus", icon: "", open: false, active: false}
+      ]))
     }
   },
 
   setMainLinks: (main) => {
-    const mainLink = localStorage.getItem('footer-links')
+    const footerLinks = localStorage.getItem('footer-links')   
 
-    if(mainLink){
+    if(footerLinks){
+      const links = JSON.parse(footerLinks)
 
-        const links = JSON.parse(mainLink)
-        links.push(main)
+      if(!links.some(el=>el.id === main.id)){
+        set({state: {footerLinks: [...links, {...main, id: links.lenght, open: true }]}})
 
-        localStorage.setItem('footer-links', JSON.stringify(links))
-
-        set({state: {footerLinks: links}})
+        localStorage.setItem('footer-links', JSON.stringify([...links, {...main, open: true  }]))
+      } else {
+        const activeLink = links.map(el=>({...el, open: true, active: false }))
+        localStorage.setItem('footer-links', JSON.stringify(activeLink))
+      }      
+      
     } else {
-
-        localStorage.setItem('footer-links', JSON.stringify([...main]))
-
-        set({state: {mainLinks: [...main]}})
+      localStorage.setItem('footer-links', JSON.stringify([{...main, open: true }]))
+      set({state: {footerLinks: [{...main, open: true }]}})
     }
   }
   

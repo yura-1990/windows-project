@@ -7,15 +7,32 @@ const useTheme = create((set, get) => ({
 
   toggleThemeMode: () => {
 
-    set({state: {themeMode: !get().state.themeMode}})
+    const mode = JSON.parse(localStorage.getItem('mode-dark'))
 
-    if(get().state.themeMode){
-        document.body.classList.add('bg-dark')
+    set({state: {themeMode: !mode}})
+    localStorage.setItem('mode-dark', JSON.stringify(!mode))    
+    
+    if(!mode){
+      document.body.classList.remove('bg-dark')
     } else {
-        document.body.classList.remove('bg-dark')
-    }   
+      document.body.classList.add('bg-dark')
+    }
     
   },
+
+  getThemeMode: ()=>{
+    const mode = JSON.parse(localStorage.getItem('mode-dark'))
+
+    set({state: {themeMode: mode}})
+
+    localStorage.setItem('mode-dark', JSON.stringify(mode))
+    
+    if(mode){
+      document.body.classList.remove('bg-dark')
+    } else {
+      document.body.classList.add('bg-dark')
+    }
+  }
 
 }))
 

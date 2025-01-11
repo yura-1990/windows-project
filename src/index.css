@@ -15,6 +15,14 @@ body .border {
 	border-color: rgba(0, 0, 0, 0.658) !important;
 }
 
+body.bg-dark .bg-mode{
+	background: #212529;
+}
+
+body .bg-mode{
+	background: #ffffff;
+}
+
 body.bg-dark ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;
@@ -88,3 +96,26 @@ body.bg-dark .offcanvas {
 	height: 50px;
 	cursor: pointer;
 }
+
+.icon{
+	cursor: pointer;
+	padding: 5px 8px;
+}
+
+.icon:hover{
+	background: #0008ff;
+}
+
+/* .resize-handle-right,
+.resize-handle-bottom,
+.resize-handle-left,
+.resize-handle-top {
+  background-color: lightgray;
+}
+
+.resize-handle-corner-bottom-right,
+.resize-handle-corner-top-right,
+.resize-handle-corner-top-left,
+.resize-handle-corner-bottom-left{
+	background-color: red;
+} */
