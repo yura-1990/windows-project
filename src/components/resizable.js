@@ -5,6 +5,7 @@ import { CgCloseR } from "react-icons/cg";
 import { FaWindowMinimize } from "react-icons/fa6";
 import useFooter from "../store/footer";
 import { IoMdContract } from "react-icons/io";
+import { RiCloseLargeFill } from "react-icons/ri";
 
 function Resizable({ element, elements, children }) {
   const resizeRef = useRef(null);
@@ -20,8 +21,8 @@ function Resizable({ element, elements, children }) {
   const setActive = useFooter(state=>state.setActive)
 
   useEffect(() => {
-    const defaultWidth = (window.innerWidth / 100) * 50;
-    const defaultHeight = (window.innerHeight / 100) * 50;
+    const defaultWidth = (window.innerWidth / 100) * 80;
+    const defaultHeight = (window.innerHeight / 100) * 80;
 
     const savedPosition = JSON.parse(localStorage.getItem(`open-element-position-${element.id}`));
     const savedSize = JSON.parse(localStorage.getItem(`open-element-size-${element.id}`));
@@ -129,11 +130,11 @@ function Resizable({ element, elements, children }) {
     localStorage.setItem(`open-element-full-screen-${element.id}`, JSON.stringify({width: savedSize.width, height: savedSize.height, x: savedPosition.x, y: savedPosition.y, top: 0, left: 0, full: true}));
     
     setIsFullSreen({...isFullScreen, full: true})
-    setSize({ width: window.innerWidth, height: window.innerHeight })
+    setSize({ width: window.innerWidth - 10, height: window.innerHeight - 85 })
     setPosition({ x: 0, y: 0 });
-    setPlace({top: 0, left: 0})
+    setPlace({top: 38, left: 5})
 
-    localStorage.setItem( `open-element-size-${element.id}`, JSON.stringify({ width: window.innerWidth, height: window.innerHeight }) );
+    localStorage.setItem( `open-element-size-${element.id}`, JSON.stringify({  width: window.innerWidth - 10, height: window.innerHeight - 85 }) );
     localStorage.setItem( `open-element-position-${element.id}`,  JSON.stringify({ x: 0, y: 0 }) );
   }
 
@@ -149,7 +150,6 @@ function Resizable({ element, elements, children }) {
         setIsFullSreen({...change})
         localStorage.setItem(`open-element-full-screen-${element.id}`, JSON.stringify({...change}));
         console.log(fullScreen);
-        
     }
   }
 
@@ -172,7 +172,7 @@ function Resizable({ element, elements, children }) {
     >
       <div
         ref={resizeRef}
-        className="rounded border overflow-hidden shadow bg-mode"
+        className="rounded border overflow-hidden shadow bg-mode "
         style={{
           position: "absolute",
           width: `${size.width}px`,
@@ -197,12 +197,12 @@ function Resizable({ element, elements, children }) {
                 }
             </div>
             <div onClick={()=>removeFooterLink(element)} className="icon">
-              <CgCloseR />
+              <RiCloseLargeFill />
             </div>
           </div>
         </div>
 
-        <div className="p-3 overflow-auto h-100">
+        <div className="overflow-auto h-100">
           {children}
         </div>
 

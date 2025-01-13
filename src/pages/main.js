@@ -9,6 +9,7 @@ function Main() {
     useEffect(()=>{
         getMainLinks()
     }, [])
+
     
 
     return (

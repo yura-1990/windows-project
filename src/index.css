@@ -119,3 +119,7 @@ body.bg-dark .offcanvas {
 .resize-handle-corner-bottom-left{
 	background-color: red;
 } */
+
+.control-section.spreadsheet-control{
+	height: 100%;
+}
